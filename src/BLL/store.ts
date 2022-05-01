@@ -9,6 +9,9 @@ export const store = configureStore({
         userProfile: userProfile.reducer,
         userRepo: userRepo.reducer
     },
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+        serializableCheck: false,
+    }),
 });
 
 export default store;

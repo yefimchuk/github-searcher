@@ -27,7 +27,6 @@ export const userProfile = createSlice({
     },
     extraReducers: {
         [fetchUser.pending]: (state, action) => {
-
             state.userRepoIsFetching = true
         },
         [fetchUser.fulfilled]: (state, action) => {

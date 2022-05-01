@@ -1,6 +1,6 @@
 import React, {SyntheticEvent, useCallback, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import {Col, Row} from "antd";
+import {Col, Image, Row} from "antd";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchUser} from "../../../BLL/profile/userProfile.slice";
 import {selectFetchingUser, selectUserProfile,} from "../../../BLL/profile/userProfile.selector";
@@ -12,7 +12,8 @@ import {REPOSITORIES_PER_PAGE} from "../../../DAL/GitHubService";
 import {clearData, fetchUserRepo, setCurrentPageUserRepo,} from "../../../BLL/userRepo/userRepo.slice";
 // @ts-ignore
 import debounce from 'lodash.debounce';
-
+import SearcherLoaderUserProfile from "../Loaders/SearcherLoaderUserProfile";
+import loader from '../../../assets/loader.gif'
 const UserProfile = React.memo(() => {
     let isLogin = useSelector(selectFetchingUser);
     let user = useSelector(selectUserProfile);
@@ -64,33 +65,38 @@ const UserProfile = React.memo(() => {
         [repoName]
     );
     return (
-        <div>
-            <Row>
-                <Col span={8}>
-                    {!isLogin && user && (
-                        <div className="user__profile">
-                            <img className="user__profile_avatar" src={user.avatar_url}/>
-                            <div className="user__profile_name">{user.name}</div>
-                            <div className="user__profile_login">{user.login}</div>
-                            <div className="user__profile_bio">{user.bio}</div>
-                            <div className="user__profile_follow">
-                                <TeamOutlined/>
-                                <div className="user__profile_followers">
-                                    {user.followers}{" "}
-                                    <span className="user__profile_follow-text">followers</span>
-                                </div>
-                                <div className="user__profile_following">
-                                    {user.following}{" "}
-                                    <span className="user__profile_follow-text">following</span>
-                                </div>
+        <div className="user__profile__container">
+
+
+              {isLogin &&userRepoData ? <SearcherLoaderUserProfile/> : user && <Row>
+                <Col span={9}>
+
+                    <div className="user__profile">
+                        <Image
+                            className="user__profile_avatar" src={user.avatar_url}
+                        />
+
+                        <div className="user__profile_name">{user.name}</div>
+                        <div className="user__profile_login">{user.login}</div>
+                        <div className="user__profile_bio">{user.bio}</div>
+                        <div className="user__profile_follow">
+                            <TeamOutlined/>
+                            <div className="user__profile_followers">
+                                {user.followers}{" "}
+                                <span className="user__profile_follow-text">followers</span>
+                            </div>
+                            <div className="user__profile_following">
+                                {user.following}{" "}
+                                <span className="user__profile_follow-text">following</span>
                             </div>
                         </div>
-                    )}
+                    </div>
+
                 </Col>
-                <Col span={16}>
+                <Col span={15}>
                     <div className="user-repo-title-container">
                         <div className="user-repo-title">
-                            <BookOutlined />
+                            <BookOutlined/>
                             <div>Repositories {userRepoTotalCount}</div>
                         </div>
                         <input
@@ -102,9 +108,13 @@ const UserProfile = React.memo(() => {
                     </div>
                     <div className="user-repo-scroll" onScroll={handleScroll}>
                         <UserRepos userRepoData={userRepoData}/>
+                        <div className='user-repo-loader-container'>
+                            {userRepoIsLoading && <img className='user-repo-loader' src={loader} alt={loader}/>}
+                        </div>
+                     
                     </div>
                 </Col>
-            </Row>
+            </Row>}
         </div>
     );
 });

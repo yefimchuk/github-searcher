@@ -14,7 +14,6 @@
     background-color: #21262d;
   }
   .user-repo-title {
-
     margin-top: 20px;
     height: 50px;
     display: flex;
@@ -44,17 +43,21 @@
 
   .user__repo {
     display: flex;
+    border-radius: 7px;
     align-items: center;
+    padding: 10px;
     justify-content: space-between;
     height: 70px;
-    box-shadow: inset 0 -1px 0 #21262d;
-
+    box-shadow: inset 0 -1px 0 rgba(33, 38, 45, 0.22);
+    &:hover {
+      background-color: rgba(100, 105, 114, 0.06);
+    }
     .user__repo__star {
       width: 50px;
       display: flex;
       align-items: center;
       justify-content: flex-start;
-margin-right: 20px;
+      margin-right: 20px;
       padding: 4px;
     }
 
@@ -65,7 +68,6 @@ margin-right: 20px;
       flex-direction: row;
 
       .user__repo__visibility {
-
         border: 1px solid #30363d;
         margin-left: 10px;
         color: #8b949e;
@@ -82,6 +84,9 @@ margin-right: 20px;
         font-size: 19px;
         color: #58a6ff;
       }
+    }
+    .user__repo__language {
+      color: #8b949e;
     }
   }
 

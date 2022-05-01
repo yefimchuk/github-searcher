@@ -6,5 +6,5 @@ export const selectUserProfile = createSelector(
 );
 export const selectFetchingUser = createSelector(
     (state: any) => state,
-    (state) => state.userProfile.isLoading,
+    (state) => state.userProfile.userRepoIsFetching,
 );

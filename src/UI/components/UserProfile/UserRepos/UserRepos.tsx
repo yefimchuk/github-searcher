@@ -1,47 +1,44 @@
-import React, { SyntheticEvent, useCallback, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 import "../User.scss";
-import { selectUserRepos } from "../../../../BLL/userRepo/userRepo.selector";
-import {
-  fetchUserRepo,
-  setCurrentPageUserRepo,
-} from "../../../../BLL/userRepo/userRepo.slice";
-import { useParams } from "react-router-dom";
 import "../UserRepos/userRepo.scss";
-import { BookOutlined, ForkOutlined, StarOutlined } from "@ant-design/icons";
-import { REPOSITORIES_PER_PAGE } from "../../../../DAL/GitHubService";
+import { ForkOutlined, StarOutlined } from "@ant-design/icons";
 // @ts-ignore
 import debounce from "*";
+import loader from "../../../../assets/loader.gif";
 
-const UserRepos = React.memo(({userRepoData}: any) => {
-
+const UserRepos = React.memo(({ userRepoData }: any) => {
   return (
     <div>
-
-        {userRepoData && userRepoData.length !== 0 &&
-          userRepoData.map((key: any) => (
-            <div className="user__repo">
-              <div>
-                <div className="user__repo__name-flex">
-                  <div className="user__repo__name">{key.name}</div>
-                  <div className="user__repo__visibility">{key.visibility}</div>
-                </div>
-                <div>{key.language}</div>
+      {!userRepoData && userRepoData.length !== 0 ? (
+        <img src={loader} />
+      ) : (
+        userRepoData.map((item: any) => (
+          <a href={item.html_url} key={item.id} className="user__repo">
+            <div>
+              <div className="user__repo__name-flex">
+                <div className="user__repo__name">{item.name}</div>
+                <div className="user__repo__visibility">{item.visibility}</div>
               </div>
-              <div>
-                <div  className="user__repo__star">
-                  <StarOutlined />
-                  {key.stargazers_count}
-                </div>
-                <div  className="user__repo__star">
-                  <ForkOutlined />
-                  {key.forks_count}
-                </div>
+              <div className="user__repo__language">{item.language}</div>
+            </div>
+            <div>
+              <div className="user__repo__star">
+                <StarOutlined />
+                {item.stargazers_count}
+              </div>
+              <div className="user__repo__star">
+                <ForkOutlined />
+                {item.forks_count}
               </div>
             </div>
-          ))}
-      </div>
 
+          </a>
+
+        ))
+
+      )}
+
+    </div>
   );
 });
 export default UserRepos;

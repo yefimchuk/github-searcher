@@ -1,40 +1,30 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import gitHubServiceInstance from "../../DAL/GitHubService";
 
-
 interface FetchUserRepoProps {
-    userName: string,
-    repoName: string,
-    userRepoCurrentPage: number
+    userName: string;
+    repoName: string;
+    userRepoCurrentPage: number;
 }
 
 export const fetchUserRepo: any = createAsyncThunk(
-    'userRepo/fetchUserRepo',
-    async (
-        {
-            userName,
-            repoName,
-            userRepoCurrentPage,
-        }: FetchUserRepoProps,
+    "userRepo/fetchUserRepo",
+    async ({userName, repoName, userRepoCurrentPage}: FetchUserRepoProps) => {
+        try {
+            return await gitHubServiceInstance.FetchRepos(
+                userName,
+                repoName,
+                userRepoCurrentPage
+            );
+        } catch (item) {
+            console.log(item)
+        }
 
-    ) => {
-return await gitHubServiceInstance.FetchRepos(userName, repoName, userRepoCurrentPage)}
-);
-export const findRepos: any = createAsyncThunk(
-    'userRepo/findRepos',
-    async (
-        {
-            userName,
-            repoName,
-            userRepoCurrentPage,
-        }: FetchUserRepoProps,
-
-    ) => {
-        return await gitHubServiceInstance.FetchRepos(userName, repoName, userRepoCurrentPage)}
+    }
 );
 
 export const userRepo = createSlice({
-    name: 'userRepo',
+    name: "userRepo",
     initialState: {
         userRepoData: [],
         userRepoIsLoading: false,
@@ -47,9 +37,9 @@ export const userRepo = createSlice({
             state.userRepoCurrentPage = action.payload;
         },
         clearData(state) {
-            state.userRepoCurrentPage = 1
-            state.userRepoData = []
-            state.userRepoTotalCount = 0
+            state.userRepoCurrentPage = 1;
+            state.userRepoData = [];
+            state.userRepoTotalCount = 0;
         },
     },
     extraReducers: {
@@ -57,7 +47,7 @@ export const userRepo = createSlice({
             state.userRepoIsLoading = true;
         },
         [fetchUserRepo.fulfilled]: (state, action) => {
-            const {items}  = action.payload.data;
+            const {items} = action.payload.data;
             // @ts-ignore
             state.userRepoData.push(...items);
             state.userRepoTotalCount = action.payload.data.total_count;

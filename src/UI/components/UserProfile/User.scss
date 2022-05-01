@@ -1,15 +1,31 @@
+.user-repo-loader-container{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  .user-repo-loader {
+    width: 35px;
+    height: 35px;
+  }
+}
 
+.user__profile__container {
+  height: 600px;
+}
 .user__profile {
-
+  .ant-image {
+    .ant-image-mask {
+      width: 90%;
+      border-radius: 100% !important;
+    }
+  }
   margin-top: 20px;
   .user__profile_avatar {
     margin-top: 10px;
     object-fit: cover;
-    width: 70%;
-    height: 70%;
+    width: 90%;
     border-radius: 50% !important;
     border: 1px solid #30363d;
-    box-shadow: 0 0 0 1px #30363d
+    box-shadow: 0 0 0 1px #30363d;
   }
 
   .user__profile_bio {
@@ -26,7 +42,7 @@
     font-style: normal;
     font-weight: 300;
     line-height: 24px;
-    color: #8b949e
+    color: #8b949e;
   }
 
   .user__profile_follow {

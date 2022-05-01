@@ -1,8 +1,8 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import { selectReposSearch, selectUsersSearch} from "../../../BLL/searcher/user.selector";
-import {Col, Row} from "antd";
-import {NavLink, } from "react-router-dom";
+import {selectReposSearch, selectUsersSearch} from "../../../BLL/searcher/user.selector";
+import {Col, Image, Row} from "antd";
+import {NavLink,} from "react-router-dom";
 import {clearData} from "../../../BLL/userRepo/userRepo.slice";
 
 const Users = React.memo(() => {
@@ -21,10 +21,13 @@ const Users = React.memo(() => {
 
                         <NavLink to={user.login} key={user.id}  onClick={handleClearData} className="user">
 
-                        <div className='user__mainInfo' >
-                            <img src={user.avatar_url} className='user__mainInfo__avatar'/>
-                            <div className='user__mainInfo__nickname'>{user.login}</div>
-                        </div>
+                            <div className='user__mainInfo'>
+                                <Image
+                                    src={user.avatar_url} className='user__mainInfo__avatar'
+                                />
+
+                                <div className='user__mainInfo__nickname'>{user.login}</div>
+                            </div>
                     </NavLink>)
                     }
 

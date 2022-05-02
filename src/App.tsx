@@ -1,5 +1,5 @@
 import React from 'react';
-import "../src/App.scss"
+
 import 'antd/dist/antd.css';
 import axios from "axios";
 import {HomeRoute} from "./UI/routes/Routes";
@@ -11,7 +11,7 @@ function App() {
         return config;
     });
     return (
-        <div className="container">
+        <div>
             <HomeRoute />
         </div>
     );

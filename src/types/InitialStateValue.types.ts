@@ -6,13 +6,13 @@ export interface UserProfileValue {
 export interface SearcherUserValue {
   users: object | null;
   repos: object | null;
-  isLoading: boolean
+  isLoading: boolean;
   total_count: object | null;
 }
 
 export interface UserRepoValue {
-  userRepoData: object[],
-  userRepoIsLoading: boolean
-  userRepoCurrentPage: number
-  userRepoTotalCount: number
+  userRepoData: object[];
+  userRepoIsLoading: boolean;
+  userRepoCurrentPage: number;
+  userRepoTotalCount: number;
 }

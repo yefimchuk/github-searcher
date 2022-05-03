@@ -27,7 +27,6 @@ const Home = () => {
           <ProfileRoute />
         </Col>
       </Row>
-
     </div>
   );
 };

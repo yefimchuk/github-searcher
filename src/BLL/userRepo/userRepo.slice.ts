@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import gitHubServiceInstance from "../../DAL/GitHubService";
-import {UserRepoValue} from "../../types/InitialStateValue.types";
+import { UserRepoValue } from "../../types/InitialStateValue.types";
 
 interface FetchUserRepoProps {
   userName: string;

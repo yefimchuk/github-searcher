@@ -119,20 +119,18 @@ const UserProfile = React.memo(() => {
                 </Col>
               </Row>
 
-                <div className="user-repo-scroll" onScroll={handleScroll}>
-                  <UserRepos userRepoData={userRepoData} />
-                  <div className="user-repo-loader-container">
-                    {userRepoIsLoading && (
-                        <img
-                            className="user-repo-loader"
-                            src={loader}
-                            alt={loader}
-                        />
-                    )}
-                  </div>
-
+              <div className="user-repo-scroll" onScroll={handleScroll}>
+                <UserRepos userRepoData={userRepoData} />
+                <div className="user-repo-loader-container">
+                  {userRepoIsLoading && (
+                    <img
+                      className="user-repo-loader"
+                      src={loader}
+                      alt={loader}
+                    />
+                  )}
+                </div>
               </div>
-
             </Col>
           </Row>
         )

@@ -3,19 +3,19 @@ import "../User.scss";
 import "../UserRepos/userRepo.scss";
 import { ForkOutlined, StarOutlined } from "@ant-design/icons";
 // @ts-ignore
-import debounce from "*";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import loader from "../../../../assets/loader.gif";
 
-const UserRepos = React.memo(({ userRepoData }: any) => {
+const UserRepos = React.memo((userRepoData: any) => {
   return (
-    <div >
+    <div>
       {!userRepoData && userRepoData.length !== 0 ? (
-        <img src={loader} />
+        <img src={loader} alt={loader} />
       ) : (
         userRepoData.map((item: any) => (
           <a href={item.html_url} key={item.id} className="user__repo">
             <div>
-              <div className="user__repo__name-flex" >
+              <div className="user__repo__name-flex">
                 <div className="user__repo__name">{item.name}</div>
                 <div className="user__repo__visibility">{item.visibility}</div>
               </div>

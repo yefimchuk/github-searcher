@@ -20,6 +20,7 @@ const Users = React.memo(() => {
                     {users.items.map((user: any) =>
 
                         <NavLink to={user.login} key={user.id}  onClick={handleClearData} className="user">
+
                         <div className='user__mainInfo' >
                             <img src={user.avatar_url} className='user__mainInfo__avatar'/>
                             <div className='user__mainInfo__nickname'>{user.login}</div>

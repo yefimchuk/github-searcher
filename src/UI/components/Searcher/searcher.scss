@@ -1,4 +1,12 @@
+.searcher__container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 450px;
+}
+
 .searcher {
+  margin-top: 10px;
 
   display: flex;
   flex-direction: column;

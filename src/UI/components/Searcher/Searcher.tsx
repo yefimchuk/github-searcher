@@ -8,6 +8,7 @@ import debounce from 'lodash.debounce';
 import {Pagination} from "antd";
 import {selectIsLogin, selectTotalCount} from "../../../BLL/searcher/user.selector";
 import {USERS_PER_PAGE} from "../../../DAL/GitHubService";
+import SearcherLoader from "../Loaders/SearcherLoader";
 
 const Searcher = React.memo(() => {
     const dispatch = useDispatch()
@@ -35,15 +36,28 @@ const Searcher = React.memo(() => {
     }, [dispatch, userName, page])
 
     return (
-        <div className="searcher">
-
-            <input onChange={debouncedUserNameChange} className="searcher__input" type="text"/>
-
-            {isLogin ? <div>login</div> : <Users/>}
-            <Pagination className="user__pagination" onChange={(page, pageSize) => {
-                setPage(page)
-            }} current={page} total={pagesCount} pageSizeOptions={[0, 0, 0]} pageSize={1} responsive={false}/>
+      <div className="searcher">
+        <input
+          onChange={debouncedUserNameChange}
+          className="searcher__input"
+          type="text"
+        />
+        <div className="searcher__container">
+          {isLogin ? <SearcherLoader /> : <Users />}
         </div>
+
+        <Pagination
+          className="user__pagination"
+          onChange={(page, pageSize) => {
+            setPage(page);
+          }}
+          current={page}
+          total={pagesCount}
+          pageSizeOptions={[0, 0, 0]}
+          pageSize={1}
+          responsive={false}
+        />
+      </div>
     );
 })
     export default Searcher

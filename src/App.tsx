@@ -4,6 +4,7 @@ import githubLogo from '../src/assets/github-logo.png'
 import "../src/App.scss"
 import 'antd/dist/antd.css';
 import axios from "axios";
+import Searcher from "./UI/components/Searcher/Searcher";
 
 function App() {
     axios.interceptors.request.use((config) => {
@@ -12,13 +13,8 @@ function App() {
         config.auth = "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";
         return config;
     });
-
-    let a = async () => {
-
-        return axios.get(`users/yefimchuk`, {})
-
-    }
     return (
+
         <div className="app">
             <Row className="app__header">
                 <Col span={24}>
@@ -33,20 +29,11 @@ function App() {
 
             </Row>
             <Row>
-                <button onClick={a}>
-                    click
-                </button>
+                <Col span={8}><Searcher/></Col>
+                <Col span={16}>ada</Col>
             </Row>
             <Row>
-                <Col span={8}>col-8</Col>
-                <Col span={8}>col-8</Col>
-                <Col span={8}>col-8</Col>
-            </Row>
-            <Row>
-                <Col span={6}>col-6</Col>
-                <Col span={6}>col-6</Col>
-                <Col span={6}>col-6</Col>
-                <Col span={6}>col-6</Col>
+
             </Row>
 
         </div>

@@ -1,0 +1,37 @@
+.searcher {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  .searcher__input {
+    margin-top: 20px;
+    width: 75%;
+    border-radius: 6px;
+    border: 1px solid #8B949E;
+    height: 35px;
+    background-color: #21262D;
+  }
+}
+
+.user{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  width: 90%;
+  border: 1px solid red;
+  .user__mainInfo{
+    .user__mainInfo__avatar{
+      width: 50px;
+      height: 50px;
+      border-radius: 50px;
+    }
+  }
+  .user__count-repos{
+
+  }
+}

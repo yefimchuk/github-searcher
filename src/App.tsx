@@ -10,7 +10,8 @@ function App() {
     axios.interceptors.request.use((config) => {
         config.baseURL = "https://api.github.com/";
         // @ts-ignore
-        config.auth = "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";
+        config.headers = { Authorization: `token ${process.env.REACT_APP_ACCESS_TOKEN}` }
+
         return config;
     });
     return (

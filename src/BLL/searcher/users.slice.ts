@@ -20,8 +20,8 @@ export const fetchRepos: any = createAsyncThunk(
 export const searcher = createSlice({
     name: 'searcher',
     initialState: {
-        data: [],
-        repos: [],
+        users: null,
+        repos: null,
         isLoading: false,
     },
     reducers: {},
@@ -30,17 +30,17 @@ export const searcher = createSlice({
             state.isLoading = true
         },
         [fetchUsersFromSearch.fulfilled]: (state, action) => {
-            state.data = action.payload
+            state.users = action.payload
         },
         [fetchUsersFromSearch.rejected]: (state, action) => {
-
+            state.isLoading = false
         },
         [fetchRepos.pending]: (state, action) => {
-            state.isLoading = true
+
         },
         [fetchRepos.fulfilled]: (state, action) => {
-            state.isLoading = false
             state.repos = action.payload
+            state.isLoading = false
         },
         [fetchRepos.rejected]: (state, action) => {
             state.isLoading = false

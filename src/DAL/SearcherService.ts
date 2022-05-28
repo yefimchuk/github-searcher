@@ -6,9 +6,9 @@ class SearcherService {
     async FetchUsersFromSearcher(userName: string) {
         return axios.get('search/users', {
             params: {
-                q: userName,
+                q: userName || 'a',
                 sort: 'followers ',
-                per_page: 5
+                per_page: 2
             }
         })
     }

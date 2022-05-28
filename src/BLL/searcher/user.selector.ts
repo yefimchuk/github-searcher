@@ -2,9 +2,9 @@ import { createSelector } from 'reselect';
 
 
 
-export const selectDataSearch = createSelector(
+export const selectUsersSearch = createSelector(
     (state: any) => state,
-    (state) => state.searcher.data,
+    (state) => state.searcher.users,
 );
 export const selectReposSearch = createSelector(
     (state: any) => state,

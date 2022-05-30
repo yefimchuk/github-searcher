@@ -7,11 +7,7 @@ import {NavLink, useParams} from "react-router-dom";
 const Users = React.memo(() => {
     let users = useSelector(selectUsersSearch)
     let repos = useSelector(selectReposSearch)
-    const match = useParams();
 
-    useEffect(()=>{
-        console.log(match)
-    }, [match])
     return <>
         { users && repos &&
             <Row className="users-row" justify="space-between" align="top">

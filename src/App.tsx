@@ -12,10 +12,8 @@ function App() {
         config.baseURL = "https://api.github.com/";
         // @ts-ignore
         config.headers['Authorization'] = `token ${process.env.REACT_APP_ACCESS_TOKEN}`
-
         return config;
     });
-    console.log(`token ${process.env.REACT_APP_ACCESS_TOKEN}`)
     return (
         <div className="container">
             <HomeRoute />

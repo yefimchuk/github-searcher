@@ -26,6 +26,12 @@ class SearcherService {
         })
             .then((response) => (response.data))));
     }
+    async FetchUser(userName: string) {
+        return axios.get(`/users/${userName}`, {
+            params: {
+            }
+        })
+    }
 
 }
 

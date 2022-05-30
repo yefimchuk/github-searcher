@@ -2,6 +2,8 @@ import React from "react";
 import {Col, Row} from "antd";
 import githubLogo from "../../../assets/github-logo.png";
 import Searcher from "../Searcher/Searcher";
+import {ProfileRoute} from "../../routes/Routes";
+
 const Home = () => {
     return    <div className="app">
         <Row className="app__header">
@@ -18,7 +20,7 @@ const Home = () => {
         </Row>
         <Row>
             <Col span={8}><Searcher/></Col>
-            <Col span={16}>ada</Col>
+            <Col span={16}><ProfileRoute/></Col>
         </Row>
         <Row>
 

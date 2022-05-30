@@ -26,7 +26,8 @@ export const searcher = createSlice({
         total_count: null
     },
 
-    reducers: {},
+    reducers: {
+    },
     extraReducers: {
         [fetchUsersFromSearch.pending]: (state, action) => {
             state.isLoading = true
@@ -50,5 +51,5 @@ export const searcher = createSlice({
         },
     },
 });
-
+export let {putUser}: any = searcher.actions
 export default searcher.reducer;

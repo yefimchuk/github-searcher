@@ -3,13 +3,14 @@ import axios from "axios";
 
 class SearcherService {
 
-    async FetchUsersFromSearcher(userName: string) {
+    async FetchUsersFromSearcher(userName: string, page: number) {
         return axios.get('search/users', {
 
             params: {
                 q: userName || 'a',
                 sort: 'followers ',
-                per_page: 5
+                per_page: 3,
+                page: page || 1
             }
         })
     }

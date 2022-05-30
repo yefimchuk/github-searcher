@@ -51,6 +51,7 @@
     }
 
     .user__mainInfo__nickname {
+      font-size: 16px;
       margin-left: 10px;
     }
   }
@@ -68,6 +69,7 @@
     display: flex;
     color: #c9d1d9;
     height: 70px;
+    font-size: 16px;
     align-items: center;
   }
 }
@@ -75,9 +77,16 @@
 .ant-pagination-item {
   background-color: rgba(139, 148, 158, 0) !important;
   border: 0;
-border-radius: 7px;
+  padding: 1px;
+
+
+  border-radius: 7px;
   a {
     color: white!important;
+  }
+  &:hover{
+    border: 1px solid #2d333d;
+    padding: 0;
   }
 }
 .ant-pagination-item-active{
@@ -87,9 +96,20 @@ border-radius: 7px;
   }
 
 }
-
+.user__pagination{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 .ant-pagination-prev .ant-pagination-item-link, .ant-pagination-next .ant-pagination-item-link{
   background-color: rgba(13, 17, 23, 0);
   border: 0;
   color: white;
+}
+.ant-pagination-jump-prev .ant-pagination-item-container .ant-pagination-item-ellipsis, .ant-pagination-jump-next .ant-pagination-item-container .ant-pagination-item-ellipsis{
+  color: white!important;
+  margin-top: 6px;
+}
+.ant-select {
+  display: none!important;
 }

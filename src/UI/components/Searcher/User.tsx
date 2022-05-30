@@ -1,29 +1,36 @@
-import React from "react";
-import {useSelector} from "react-redux";
-import {selectIsLogin, selectReposSearch, selectUsersSearch} from "../../../BLL/searcher/user.selector";
-import {Col, Pagination, Row} from "antd";
+import React, {useEffect} from "react";
+import { useSelector} from "react-redux";
+import { selectReposSearch, selectUsersSearch} from "../../../BLL/searcher/user.selector";
+import {Col, Row} from "antd";
+import {NavLink, useParams} from "react-router-dom";
 
 const Users = React.memo(() => {
     let users = useSelector(selectUsersSearch)
     let repos = useSelector(selectReposSearch)
-    let isLogin = useSelector(selectIsLogin)
+    const match = useParams();
+
+    useEffect(()=>{
+        console.log(match)
+    }, [match])
     return <>
-        {isLogin ? <div>loading</div> : users &&
+        { users && repos &&
             <Row className="users-row" justify="space-between" align="top">
                 <Col className="users-col">
 
-                    {users.items.map((user: any) => <div className="user">
-                        <div className='user__mainInfo'>
+                    {users.items.map((user: any) =>
+
+                        <NavLink to={user.login} key={user.id}  className="user">
+                        <div className='user__mainInfo' >
                             <img src={user.avatar_url} className='user__mainInfo__avatar'/>
                             <div className='user__mainInfo__nickname'>{user.login}</div>
                         </div>
-                    </div>)
+                    </NavLink>)
                     }
 
                 </Col>
                 <Col className="users-col-rep">
 
-                    {repos.map((user: any) => <div className="repos">
+                    {repos.map((user: any, index: number) => <div className="repos" key={index}>
                         <div className='user__count-repos'>
                             <div>repositories: {user.total_count}</div>
                         </div>
@@ -31,7 +38,7 @@ const Users = React.memo(() => {
                     }
 
                 </Col>
-                <Pagination defaultCurrent={1} total={50}/>
+
             </Row>
 
 

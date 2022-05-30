@@ -3,9 +3,9 @@ import searcherServiceInstance from "../../DAL/SearcherService";
 
 export const fetchUsersFromSearch: any = createAsyncThunk(
     'searcher/fetchUsersFromSearch',
-    async (userName: string) => {
+    async ({userName, page}: {userName : string, page: number}) => {
 
-        const response = await searcherServiceInstance.FetchUsersFromSearcher(userName);
+        const response = await searcherServiceInstance.FetchUsersFromSearcher(userName,page);
         return response.data;
     },
 );
@@ -23,7 +23,9 @@ export const searcher = createSlice({
         users: null,
         repos: null,
         isLoading: false,
+        total_count: null
     },
+
     reducers: {},
     extraReducers: {
         [fetchUsersFromSearch.pending]: (state, action) => {
@@ -31,6 +33,7 @@ export const searcher = createSlice({
         },
         [fetchUsersFromSearch.fulfilled]: (state, action) => {
             state.users = action.payload
+            state.total_count = action.payload.total_count
         },
         [fetchUsersFromSearch.rejected]: (state, action) => {
             state.isLoading = false

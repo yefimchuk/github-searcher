@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-class SearcherService {
+class GitHubService {
 
     async FetchUsersFromSearcher(userName: string, page: number) {
         return axios.get('search/users', {
@@ -35,5 +35,5 @@ class SearcherService {
 
 }
 
-const searcherServiceInstance = new SearcherService()
-export default searcherServiceInstance;
+const gitHubServiceInstance = new GitHubService()
+export default gitHubServiceInstance;

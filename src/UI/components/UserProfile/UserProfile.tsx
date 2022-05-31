@@ -4,6 +4,8 @@ import {Col, Row} from "antd";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchUser} from "../../../BLL/profile/userProfile.slice";
 import {selectFetchingUser, selectUserProfile} from "../../../BLL/profile/userProfile.selector";
+import '../UserProfile/User.scss'
+import {TeamOutlined} from "@ant-design/icons";
 
 const UserProfile = React.memo(() => {
     let {userName} = useParams()
@@ -17,17 +19,19 @@ const UserProfile = React.memo(() => {
     return <div>
         <Row>
             <Col span={10}>
-                {!isLogin && user && <div>
+                {!isLogin && user && <div className='user__profile'>
 
-                    <img src={user.avatar_url}/>
-                    <div>{user.name}</div>
-                    <div>{user.login}</div>
-                    <div>{user.bio}</div>
-                    <div>{user.followers}</div>
-                    <div>{user.following}</div>
-
-
-                    <div></div>
+                    <img className='user__profile_avatar' src={user.avatar_url}/>
+                    <div className='user__profile_name'>{user.name}</div>
+                    <div className='user__profile_login'>{user.login}</div>
+                    <div className='user__profile_bio'>{user.bio}</div>
+                    <div className='user__profile_follow'>
+                        <TeamOutlined/>
+                        <div className='user__profile_followers'>{user.followers} <span
+                            className='user__profile_follow-text'>followers</span></div>
+                        <div className='user__profile_following'>{user.following} <span
+                            className='user__profile_follow-text'>following</span></div>
+                    </div>
                 </div>
                 }
 

@@ -7,6 +7,7 @@ import Users from "./User";
 import debounce from 'lodash.debounce';
 import {Pagination} from "antd";
 import {selectIsLogin, selectTotalCount} from "../../../BLL/searcher/user.selector";
+import {USERS_PER_PAGE} from "../../../DAL/GitHubService";
 
 const Searcher = React.memo(() => {
     const dispatch = useDispatch()
@@ -23,7 +24,7 @@ const Searcher = React.memo(() => {
     let total = useSelector(selectTotalCount)
 
     total = total > 1000 ? 1000 : total;
-    const pagesCount = Math.ceil(total / 3);
+    const pagesCount = Math.ceil(total / USERS_PER_PAGE);
     useEffect(() => {
 
         let fetchData = async () => {

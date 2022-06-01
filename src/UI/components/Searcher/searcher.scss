@@ -10,9 +10,9 @@
     margin-top: 20px;
     width: 75%;
     border-radius: 6px;
-    border: 1px solid #8B949E;
+    border: 1px solid #8b949e;
     height: 35px;
-    background-color: #21262D;
+    background-color: #21262d;
   }
 }
 
@@ -26,7 +26,6 @@
 
 .users-row {
   width: 80%;
-
 }
 
 .user {
@@ -55,7 +54,6 @@
       margin-left: 10px;
     }
   }
-
 }
 
 .repos {
@@ -79,37 +77,41 @@
   border: 0;
   padding: 1px;
 
-
   border-radius: 7px;
   a {
-    color: white!important;
+    color: white !important;
   }
-  &:hover{
+  &:hover {
     border: 1px solid #2d333d;
     padding: 0;
   }
 }
-.ant-pagination-item-active{
-  background-color: #1f6feb!important;
+.ant-pagination-item-active {
+  background-color: #1f6feb !important;
   a {
-    color: white!important;
+    color: white !important;
   }
-
 }
-.user__pagination{
+.user__pagination {
   display: flex;
   justify-content: center;
   width: 100%;
 }
-.ant-pagination-prev .ant-pagination-item-link, .ant-pagination-next .ant-pagination-item-link{
+.ant-pagination-prev .ant-pagination-item-link,
+.ant-pagination-next .ant-pagination-item-link {
   background-color: rgba(13, 17, 23, 0);
   border: 0;
   color: white;
 }
-.ant-pagination-jump-prev .ant-pagination-item-container .ant-pagination-item-ellipsis, .ant-pagination-jump-next .ant-pagination-item-container .ant-pagination-item-ellipsis{
-  color: white!important;
+.ant-pagination-jump-prev
+  .ant-pagination-item-container
+  .ant-pagination-item-ellipsis,
+.ant-pagination-jump-next
+  .ant-pagination-item-container
+  .ant-pagination-item-ellipsis {
+  color: white !important;
   margin-top: 6px;
 }
 .ant-select {
-  display: none!important;
+  display: none !important;
 }

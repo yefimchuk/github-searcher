@@ -1,11 +1,11 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import searcherServiceInstance from "../../DAL/SearcherService";
+import gitHubServiceInstance from "../../DAL/GitHubService";
 
 export const fetchUsersFromSearch: any = createAsyncThunk(
     'searcher/fetchUsersFromSearch',
     async ({userName, page}: {userName : string, page: number}) => {
 
-        const response = await searcherServiceInstance.FetchUsersFromSearcher(userName,page);
+        const response = await gitHubServiceInstance.FetchUsersFromSearcher(userName,page);
         return response.data;
     },
 );
@@ -13,7 +13,7 @@ export const fetchRepos: any = createAsyncThunk(
     'searcher/fetchPersonalUserInfo',
     async (data: any) => {
 
-        return await searcherServiceInstance.FetchRepos(data);
+        return await gitHubServiceInstance.FetchUsersRepos(data);
     },
 );
 

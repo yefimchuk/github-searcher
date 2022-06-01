@@ -1,17 +1,14 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import searcherServiceInstance from "../../DAL/SearcherService";
+import gitHubServiceInstance from "../../DAL/GitHubService";
 
 export const fetchUser: any = createAsyncThunk(
     'userProfile/fetchUser',
-    async (userName: string, {rejectWithValue}) => {
+    async ({userName, repoName, userRepoCurrentPage}: any, {rejectWithValue}) => { //Todo select type
         try {
-            const response = await searcherServiceInstance.FetchUser(userName);
-
-            return response.data;
-        }
-        catch (e) {
-
-         return rejectWithValue(e)
+            const userData = await gitHubServiceInstance.FetchUser(userName);
+            return userData.data
+        } catch (e) {
+            return rejectWithValue(e)
         }
 
 
@@ -21,25 +18,26 @@ export const fetchUser: any = createAsyncThunk(
 export const userProfile = createSlice({
     name: 'userProfile',
     initialState: {
-        isLogin: false,
+        userRepoIsFetching: false,
         user: null,
-        repo: null,
     } as any,
 
-    reducers: {},
+    reducers: {
+
+    },
     extraReducers: {
         [fetchUser.pending]: (state, action) => {
 
-            state.isLogin = true
+            state.userRepoIsFetching = true
         },
         [fetchUser.fulfilled]: (state, action) => {
-
-            state.isLogin = false
             state.user = action.payload
+            state.userRepoIsFetching = false
         },
         [fetchUser.rejected]: (state, action) => {
-            state.isLogin = false
+            state.userRepoIsFetching = false
         },
+
     },
 });
 

@@ -1,0 +1,104 @@
+.user-repo-title-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 80%;
+  box-shadow: inset 0 -1px 0 #21262d;
+  .user-repo__input {
+    margin-top: 20px;
+    margin-left: 10px;
+    width: 50%;
+    border-radius: 6px;
+    border: 1px solid #8b949e;
+    height: 35px;
+    background-color: #21262d;
+  }
+  .user-repo-title {
+
+    margin-top: 20px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 16px;
+    color: #c9d1d9;
+    line-height: 30px;
+    width: 30%;
+
+    padding: 10px;
+
+    &:hover {
+      background-color: rgba(100, 105, 114, 0.21);
+      border-radius: 10px;
+    }
+  }
+}
+
+.user-repo-scroll {
+  margin-top: 10px;
+  overflow-y: scroll;
+  height: 500px;
+  width: 90%;
+  color: white;
+
+  .user__repo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    box-shadow: inset 0 -1px 0 #21262d;
+
+    .user__repo__star {
+      width: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+margin-right: 20px;
+      padding: 4px;
+    }
+
+    .user__repo__name-flex {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+
+      .user__repo__visibility {
+
+        border: 1px solid #30363d;
+        margin-left: 10px;
+        color: #8b949e;
+        display: inline-block;
+        padding: 0 9px;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 18px;
+        white-space: nowrap;
+        border-radius: 2em;
+      }
+
+      .user__repo__name {
+        font-size: 19px;
+        color: #58a6ff;
+      }
+    }
+  }
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: rgba(100, 105, 114, 0.21);
+    border-radius: 100px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    border-left: 0;
+    border-right: 0;
+    background-color: white;
+  }
+}

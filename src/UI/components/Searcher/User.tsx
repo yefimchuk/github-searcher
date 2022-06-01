@@ -1,13 +1,17 @@
-import React, {useEffect} from "react";
-import { useSelector} from "react-redux";
+import React from "react";
+import {useDispatch, useSelector} from "react-redux";
 import { selectReposSearch, selectUsersSearch} from "../../../BLL/searcher/user.selector";
 import {Col, Row} from "antd";
-import {NavLink, useParams} from "react-router-dom";
+import {NavLink, } from "react-router-dom";
+import {clearData} from "../../../BLL/userRepo/userRepo.slice";
 
 const Users = React.memo(() => {
     let users = useSelector(selectUsersSearch)
     let repos = useSelector(selectReposSearch)
-
+    const dispatch = useDispatch();
+    const handleClearData = () => {
+        dispatch(clearData());
+    };
     return <>
         { users && repos &&
             <Row className="users-row" justify="space-between" align="top">
@@ -15,7 +19,7 @@ const Users = React.memo(() => {
 
                     {users.items.map((user: any) =>
 
-                        <NavLink to={user.login} key={user.id}  className="user">
+                        <NavLink to={user.login} key={user.id}  onClick={handleClearData} className="user">
                         <div className='user__mainInfo' >
                             <img src={user.avatar_url} className='user__mainInfo__avatar'/>
                             <div className='user__mainInfo__nickname'>{user.login}</div>

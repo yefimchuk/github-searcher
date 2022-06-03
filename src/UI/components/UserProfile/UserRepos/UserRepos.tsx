@@ -8,14 +8,14 @@ import loader from "../../../../assets/loader.gif";
 
 const UserRepos = React.memo(({ userRepoData }: any) => {
   return (
-    <div>
+    <div >
       {!userRepoData && userRepoData.length !== 0 ? (
         <img src={loader} />
       ) : (
         userRepoData.map((item: any) => (
           <a href={item.html_url} key={item.id} className="user__repo">
             <div>
-              <div className="user__repo__name-flex">
+              <div className="user__repo__name-flex" >
                 <div className="user__repo__name">{item.name}</div>
                 <div className="user__repo__visibility">{item.visibility}</div>
               </div>
@@ -31,13 +31,9 @@ const UserRepos = React.memo(({ userRepoData }: any) => {
                 {item.forks_count}
               </div>
             </div>
-
           </a>
-
         ))
-
       )}
-
     </div>
   );
 });

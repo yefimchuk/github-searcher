@@ -1,4 +1,4 @@
-.user-repo-loader-container{
+.user-repo-loader-container {
   display: flex;
   justify-content: center;
   width: 100%;
@@ -7,14 +7,23 @@
     height: 35px;
   }
 }
+.ant-image-mask {
 
+  border-radius: 20% !important;
+}
 .user__profile__container {
   height: 600px;
-
 }
 .user__profile {
+
   .ant-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     .ant-image-mask {
+      margin-left: 19px;
+      margin-top: 8px;
       width: 90%;
       border-radius: 100% !important;
     }

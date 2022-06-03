@@ -74,8 +74,8 @@ const UserProfile = React.memo(() => {
         <SearcherLoaderUserProfile />
       ) : (
         user && (
-          <Row>
-            <Col  xs={23} sm={23} md={23} lg={9} xl={9} xxl={9}>
+          <Row justify="center" align="top">
+            <Col xs={24} sm={24} md={24} lg={9} xl={9} xxl={9}>
               <div className="user__profile">
                 <Image className="user__profile_avatar" src={user.avatar_url} />
 
@@ -95,31 +95,44 @@ const UserProfile = React.memo(() => {
                 </div>
               </div>
             </Col>
-            <Col  xs={23} sm={23} md={23} lg={15} xl={15} xxl={9}>
-              <div className="user-repo-title-container">
-                <div className="user-repo-title">
+            <Col xs={24} sm={24} md={24} lg={15} xl={15} xxl={9}>
+              <Row className="user-repo-title-container">
+                <Col
+                  xs={24}
+                  sm={24}
+                  md={24}
+                  lg={15}
+                  xl={15}
+                  xxl={9}
+                  className="user-repo-title"
+                >
                   <BookOutlined />
                   <div>Repositories {userRepoTotalCount}</div>
-                </div>
-                <input
-                  placeholder="search repositories"
-                  onChange={debouncedUserNameChange}
-                  className="user-repo__input"
-                  type="text"
-                />
+                </Col>
+                <Col xs={24} sm={24} md={24} lg={15} xl={15} xxl={9}>
+                  <input
+                    placeholder="search repositories"
+                    onChange={debouncedUserNameChange}
+                    className="user-repo__input"
+                    type="text"
+                  />
+                </Col>
+              </Row>
+
+                <div className="user-repo-scroll" onScroll={handleScroll}>
+                  <UserRepos userRepoData={userRepoData} />
+                  <div className="user-repo-loader-container">
+                    {userRepoIsLoading && (
+                        <img
+                            className="user-repo-loader"
+                            src={loader}
+                            alt={loader}
+                        />
+                    )}
+                  </div>
+
               </div>
-              <div className="user-repo-scroll" onScroll={handleScroll}>
-                <UserRepos userRepoData={userRepoData} />
-                <div className="user-repo-loader-container">
-                  {userRepoIsLoading && (
-                    <img
-                      className="user-repo-loader"
-                      src={loader}
-                      alt={loader}
-                    />
-                  )}
-                </div>
-              </div>
+
             </Col>
           </Row>
         )

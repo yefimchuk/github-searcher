@@ -19,8 +19,8 @@ const Home = () => {
 
         </Row>
         <Row>
-            <Col span={8}><Searcher/></Col>
-            <Col span={16}><ProfileRoute/></Col>
+            <Col  xs={23} sm={23} md={23} lg={11} xl={8} xxl={8}><Searcher/></Col>
+            <Col xs={23} sm={23} md={23} lg={11} xl={16} xxl={16}><ProfileRoute/></Col>
         </Row>
         <Row>
 

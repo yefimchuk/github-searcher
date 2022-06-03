@@ -9,8 +9,6 @@ import {Pagination} from "antd";
 import {selectIsLogin, selectTotalCount} from "../../../BLL/searcher/user.selector";
 import {USERS_PER_PAGE} from "../../../DAL/GitHubService";
 import SearcherLoader from "../Loaders/SearcherLoader";
-import SearcherLoader2 from "../Loaders/SearcherLoaderUserProfile";
-
 const Searcher = React.memo(() => {
     const dispatch = useDispatch()
     const [userName, setUserName] = useState<string>('');

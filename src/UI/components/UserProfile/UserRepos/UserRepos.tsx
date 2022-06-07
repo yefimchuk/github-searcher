@@ -6,7 +6,8 @@ import { ForkOutlined, StarOutlined } from "@ant-design/icons";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import loader from "../../../../assets/loader.gif";
 
-const UserRepos = React.memo((userRepoData: any) => {
+const UserRepos = React.memo(({userRepoData}: any) => {
+
   return (
     <div>
       {!userRepoData && userRepoData.length !== 0 ? (

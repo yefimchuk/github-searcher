@@ -26,9 +26,17 @@ export const searcher = createSlice({
     repos: null,
     isLoading: false,
     total_count: null,
+    per: null
   } as SearcherUserValue,
 
-  reducers: {},
+  reducers: {
+    clearDataSearcher(state) {
+
+      state.users = null
+      state.repos = null
+
+    },
+  },
   extraReducers: {
     [fetchUsersFromSearch.pending]: (state, action) => {
       state.isLoading = true;
@@ -36,6 +44,7 @@ export const searcher = createSlice({
     [fetchUsersFromSearch.fulfilled]: (state, action) => {
       state.users = action.payload;
       state.total_count = action.payload.total_count;
+      state.per = action.payload.items.length;
     },
     [fetchUsersFromSearch.rejected]: (state, action) => {
       state.isLoading = false;
@@ -50,5 +59,5 @@ export const searcher = createSlice({
     },
   },
 });
-export let { putUser }: any = searcher.actions;
+export let { clearDataSearcher }: any = searcher.actions;
 export default searcher.reducer;

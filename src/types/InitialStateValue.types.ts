@@ -8,6 +8,7 @@ export interface SearcherUserValue {
   repos: object | null;
   isLoading: boolean;
   total_count: object | null;
+  per: number | null;
 }
 
 export interface UserRepoValue {

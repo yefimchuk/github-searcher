@@ -19,10 +19,13 @@ class GitHubService {
   }
 
   async FetchUsersRepos(data: any) {
+    debugger
     return Promise.all(
+
       data.map((user: any) =>
         axios
           .get(`search/repositories?q= user:${user.login} `, {
+
             headers: this.headers,
             params: {
               per_page: 1,

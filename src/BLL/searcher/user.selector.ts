@@ -16,3 +16,8 @@ export const selectTotalCount = createSelector(
   (state: any) => state,
   (state) => state.searcher.total_count
 );
+
+export const selectPerCount = createSelector(
+    (state: any) => state,
+    (state) => state.searcher.total_count
+);

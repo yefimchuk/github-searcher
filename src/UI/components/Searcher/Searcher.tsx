@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import "../Searcher/searcher.scss";
 import { useDispatch, useSelector } from "react-redux";
 import {
+
   fetchRepos,
   fetchUsersFromSearch,
 } from "../../../BLL/searcher/users.slice";
@@ -10,19 +11,23 @@ import Users from "./User";
 import debounce from "lodash.debounce";
 import { Pagination } from "antd";
 import {
-  selectIsLogin,
-  selectTotalCount,
+  selectIsLogin, selectReposSearch,
+  selectTotalCount, selectUsersSearch,
 } from "../../../BLL/searcher/user.selector";
 import { USERS_PER_PAGE } from "../../../DAL/GitHubService";
 import SearcherLoader from "../Loaders/SearcherLoader";
+
 const Searcher = React.memo(() => {
   const dispatch = useDispatch();
   const [userName, setUserName] = useState<string>("");
   const [page, setPage] = useState<number>(1);
+  let users = useSelector(selectUsersSearch);
+  let repos = useSelector(selectReposSearch);
   const handleUserNameChange = (event: {
     target: { value: React.SetStateAction<string> };
   }) => {
     setUserName(event.target.value);
+
   };
   let isLogin = useSelector(selectIsLogin);
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -36,7 +41,9 @@ const Searcher = React.memo(() => {
   const pagesCount = Math.ceil(total / USERS_PER_PAGE);
   useEffect(() => {
     let fetchData = async () => {
-      let res = await dispatch(fetchUsersFromSearch({ userName, page }));
+
+      let res = await dispatch(fetchUsersFromSearch({userName, page}));
+
       dispatch(fetchRepos(res.payload.items));
     };
     fetchData().catch((key) => console.error(key));
@@ -50,7 +57,7 @@ const Searcher = React.memo(() => {
         type="text"
       />
       <div className="searcher__container">
-        {isLogin ? <SearcherLoader /> : <Users />}
+        {isLogin ? <SearcherLoader /> : <Users users={users} repos={repos} />}
       </div>
 
       <Pagination

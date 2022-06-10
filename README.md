@@ -1,46 +1,71 @@
-# Getting Started with Create React App
+# Github searcher
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+#### Tech Used
 
-In the project directory, you can run:
+-  React 
+-  AntDesign
+-  Redux-toolkit
+-  Axios
+-  GitHubAPI
 
-### `yarn start`
+## The UI
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<img src="src/assets/ui.png" alt="The User Interface" width="1300"/>
 
-### `yarn test`
+#### API
+- Used github API - https://docs.github.com/en/rest 
+- baseURL = https://api.github.com/ 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## How To Run The Application
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Step 1: 
+- Clone the repo
+- Open it in your favorite editor
+- Open a terminal in your editor and run `yarn install` or `npm install`
 
-### `yarn eject`
+#### Step 2: 
+- Head over to https://github.com/settings/tokens to get an access token. (Guide how get token https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+- Create a `.env` file in the root folder and put your keys in the file like this: 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+REACT_APP_ACCESS_TOKEN=YourGitHubAccessToken
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Step 3: 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- In your terminal run `yarn start` or `npm start`. 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Dependencies 
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```json
+"dependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "@reduxjs/toolkit": "^1.8.2",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^13.0.0",
+    "@testing-library/user-event": "^13.2.1",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.7.13",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "antd": "^4.20.6",
+    "axios": "^0.27.2",
+    "dart-sass": "^1.25.0",
+    "lodash.debounce": "^4.0.8",
+    "react": "^18.1.0",
+    "react-content-loader": "^6.2.0",
+    "react-dom": "^18.1.0",
+    "react-redux": "^8.0.2",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.1",
+    "sass": "^1.52.1",
+    "typescript": "^4.4.2",
+    "web-vitals": "^2.1.0"
+  },
+  
+  ```
